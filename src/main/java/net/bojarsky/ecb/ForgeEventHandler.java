@@ -3,14 +3,10 @@ package net.bojarsky.ecb;
 import net.dries007.tfc.common.capabilities.food.TFCFoodData;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.GameRules;
-import net.minecraft.world.level.LevelAccessor;
 
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -56,22 +52,4 @@ public final class ForgeEventHandler {
         }
     }
 
-    @SubscribeEvent
-    public static void onWorldLoad(LevelEvent.Load event) {
-        LevelAccessor var2 = event.getLevel();
-        if (var2 instanceof ServerLevel level) {
-            Runnable t = () -> {
-                try {
-                    Thread.sleep(1000L);
-                } catch (InterruptedException ec) {
-                    ec.printStackTrace();
-                }
-
-                level.getGameRules().getRule(GameRules.RULE_REDUCEDDEBUGINFO).set(false, level.getServer());
-                Ecb.LOGGER.info("!!! COORDS ARE RETURNED !!!");
-            };
-            Thread var3 = new Thread(t);
-            var3.start();
-        }
-    }
 }
