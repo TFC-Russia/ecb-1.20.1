@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.bojarsky.ecb.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["MixinFLBeehiveBlockEntity"],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "ecb.refmap.json"
+}
